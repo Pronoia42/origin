@@ -6,6 +6,7 @@ import { CodeNameDTO } from '@energyweb/origin-device-registry-irec-local-api-re
 import { prepareDeviceTypesOptions } from '../utils';
 
 type TUseDeviceTypeFilterLogic = (
+  allFuelTypes: CodeNameDTO[],
   allDeviceTypes: CodeNameDTO[],
   value: FormSelectOption[],
   onChange: (...event: any[]) => void,
@@ -13,6 +14,7 @@ type TUseDeviceTypeFilterLogic = (
 ) => SelectAutocompleteProps;
 
 export const useDeviceTypeFilterLogic: TUseDeviceTypeFilterLogic = (
+  allFuelTypes,
   allDeviceTypes,
   value,
   onChange,
@@ -28,7 +30,10 @@ export const useDeviceTypeFilterLogic: TUseDeviceTypeFilterLogic = (
       autocomplete: true,
       multiple: true,
       dependentOn: 'fuelType',
-      dependentOptionsCallback: prepareDeviceTypesOptions(allDeviceTypes),
+      dependentOptionsCallback: prepareDeviceTypesOptions(
+        allFuelTypes,
+        allDeviceTypes
+      ),
     },
     errorExists: null,
     errorText: '',

@@ -532,6 +532,13 @@
       }
     },
     "exchange": {
+      "viewMarket": {
+        "generationFrom": "Generation Start Date",
+        "generationTo": "Generation End Date",
+        "energy": "Energy",
+        "price": "Price",
+        "placeBidButton": "Place bid order"
+      },
       "allBundles": {
         "tableTitle": "All bundles",
         "totalEnergy": "Total energy",

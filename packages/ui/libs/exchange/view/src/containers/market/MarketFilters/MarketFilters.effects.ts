@@ -41,6 +41,7 @@ export const useMarketFiltersEffects = ({
   };
 
   const deviceTypeAutocompleteProps = useDeviceTypeFilterLogic(
+    allFuelTypes,
     allDeviceTypes,
     state.deviceType,
     handleDeviceTypeChange,
