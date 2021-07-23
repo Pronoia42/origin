@@ -1,32 +1,39 @@
 import { Divider } from '@material-ui/core';
-import React from 'react';
+import React, { FC } from 'react';
 import { TotalAndButtons } from '../TotalAndButtons';
 import { useStyles } from './OneTimePurchase.styles';
 import { useOneTimePurchaseEffects } from './OneTimePurchase.effects';
 import { FormDatePicker } from 'libs/ui/core/src/components/form/FormDatePicker';
 import { FormInput } from '@energyweb/origin-ui-core';
+import { isEmpty } from 'lodash';
+import { MarketFiltersState } from '../../../pages';
 
-export const OneTimePurchase = () => {
+interface OneTimePurchaseProps {
+  filters: MarketFiltersState;
+}
+
+export const OneTimePurchase: FC<OneTimePurchaseProps> = ({ filters }) => {
   const classes = useStyles();
-  const { register, control, fields, buttons } = useOneTimePurchaseEffects();
-
+  const { register, control, fields, buttons, errors, dirtyFields } =
+    useOneTimePurchaseEffects(filters);
+  const { generationFrom, generationTo, energy, price } = fields;
   return (
     <div>
       <div className={classes.block}>
         <div className={classes.item}>
           <FormDatePicker
             control={control}
-            errorExists={false}
-            errorText={''}
-            field={fields.generationFrom}
+            errorExists={!isEmpty(errors[generationFrom.name])}
+            errorText={errors[generationFrom.name]?.message ?? ''}
+            field={generationFrom}
           />
         </div>
         <div className={classes.item}>
           <FormDatePicker
             control={control}
-            errorExists={false}
-            errorText={''}
-            field={fields.generationTo}
+            errorExists={!isEmpty(errors[generationTo.name])}
+            errorText={errors[generationTo.name]?.message ?? ''}
+            field={generationTo}
           />
         </div>
       </div>
@@ -35,25 +42,23 @@ export const OneTimePurchase = () => {
         <div className={classes.item}>
           <FormInput
             variant="filled"
-            field={fields.energy}
-            isDirty={true}
-            disabled={false}
-            register={register}
-            errorExists={false}
-            errorText={''}
             margin="none"
+            field={energy}
+            isDirty={dirtyFields[energy.name]}
+            register={register}
+            errorExists={!isEmpty(errors[energy.name])}
+            errorText={errors[energy.name]?.message ?? ''}
           />
         </div>
         <div className={classes.item}>
           <FormInput
             variant="filled"
-            field={fields.price}
-            isDirty={true}
-            disabled={false}
-            register={register}
-            errorExists={false}
-            errorText={''}
             margin="none"
+            field={price}
+            isDirty={dirtyFields[price.name]}
+            register={register}
+            errorExists={!isEmpty(errors[price.name])}
+            errorText={errors[price.name]?.message ?? ''}
           />
         </div>
       </div>

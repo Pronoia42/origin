@@ -3,6 +3,7 @@ import {
   FormSelectOption,
   SelectAutocompleteProps,
 } from '@energyweb/origin-ui-core';
+import { useTranslation } from 'react-i18next';
 
 type TUseRegionsFilterLogic = (
   value: FormSelectOption[],
@@ -15,6 +16,8 @@ export const useRegionsFilterLogic: TUseRegionsFilterLogic = (
   onChange,
   allRegions
 ) => {
+  const { t } = useTranslation();
+
   const regionsOptions: FormSelectOption[] = allRegions
     ? Object.keys(allRegions).map((region) => ({
         value: region,
@@ -27,7 +30,7 @@ export const useRegionsFilterLogic: TUseRegionsFilterLogic = (
     onChange,
     field: {
       name: 'regions',
-      label: 'Regions',
+      label: t('exchange.viewMarket.regions'),
       options: regionsOptions,
       multiple: true,
     },

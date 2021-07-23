@@ -9,8 +9,4 @@ export const gridOperatorOptions: FormSelectOption[] = [
     value: 'TH-PEA',
     label: 'TH-PEA',
   },
-  {
-    value: 'TH-ANY',
-    label: 'TH-ANY',
-  },
 ];

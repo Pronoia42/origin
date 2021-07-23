@@ -6,10 +6,10 @@ export const useOneTimePurchaseFormLogic = () => {
 
   return {
     initialValues: {
-      generationFrom: '',
-      generationTo: '',
-      energy: '',
-      price: '',
+      generationFrom: null,
+      generationTo: null,
+      energy: null,
+      price: null,
     },
     validationSchema: yup.object({
       energy: yup

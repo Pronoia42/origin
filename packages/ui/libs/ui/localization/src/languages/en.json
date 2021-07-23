@@ -533,13 +533,22 @@
     },
     "exchange": {
       "viewMarket": {
+        "fuelType": "Fuel Type",
+        "deviceType": "Device Type",
+        "regions": "Regions",
+        "gridOperator": "Grid Operator",
+        "subregions": "Subregions",
         "oneTimePurchase": "One time purchase",
         "repeatedPurchase": "Repeated purchase",
         "generationFrom": "Generation Start Date",
         "generationTo": "Generation End Date",
         "energy": "Energy",
         "price": "Price",
-        "placeBidButton": "Place bid order"
+        "placeBidButton": "Place bid order",
+        "notifications": {
+          "createBidSuccess": "Bid successfully placed",
+          "createBidError": "Error while creating bid"
+        }
       },
       "allBundles": {
         "tableTitle": "All bundles",

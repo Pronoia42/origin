@@ -67,28 +67,28 @@ export const useMarketFiltersEffects = ({
   } = useApiRegionsConfiguration();
   const handleRegionChange = (newValues: FormSelectOption[]) => {
     dispatch({
-      type: MarketFilterActionEnum.SET_REGION,
+      type: MarketFilterActionEnum.SET_REGIONS,
       payload: newValues,
     });
   };
   const regionsAutocompleteProps = useRegionsFilterLogic(
-    state.region,
+    state.regions,
     handleRegionChange,
     allRegions
   );
 
   const handleSubRegionChange = (newValues: FormSelectOption[]) => {
     dispatch({
-      type: MarketFilterActionEnum.SET_SUBREGION,
+      type: MarketFilterActionEnum.SET_SUBREGIONS,
       payload: newValues,
     });
   };
   const subRegionsAutocompleteProps = useSubRegionsFilterLogic(
-    state.subregion,
+    state.subregions,
     handleSubRegionChange,
     country,
     allRegions,
-    state.region
+    state.regions
   );
 
   const isLoading =

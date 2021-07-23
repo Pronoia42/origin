@@ -11,7 +11,7 @@ export const useViewMarketPageEffects = () => {
 
   const oneTimePurchase: ListAction = {
     name: t('exchange.viewMarket.oneTimePurchase'),
-    content: <OneTimePurchase />,
+    content: <OneTimePurchase filters={state} />,
   };
 
   const repeatedPurchase: ListAction = {
