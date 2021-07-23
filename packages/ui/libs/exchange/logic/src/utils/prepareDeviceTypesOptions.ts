@@ -6,8 +6,10 @@ export const prepareDeviceTypesOptions = (
   allFuelTypes: CodeNameDTO[],
   allDeviceTypes: CodeNameDTO[]
 ): ((selected: FormSelectOption[]) => FormSelectOption[]) => {
-  return (selectedFuelOption: FormSelectOption[]) => {
-    const selectedFuelValues = selectedFuelOption.map((option) => option.value);
+  return (selectedFuelOptions: FormSelectOption[]) => {
+    const selectedFuelValues = selectedFuelOptions.map(
+      (option) => option.value
+    );
 
     const mergedOptions = selectedFuelValues.flatMap((fuelType) => {
       const matchingDeviceTypes = fuelToDeviceTypesMatching[fuelType];

@@ -1,15 +1,12 @@
 import { makeStyles } from '@material-ui/core';
 
 export const useStyles = makeStyles({
-  wrapper: {
-    marginTop: 20,
-  },
-  blockWrapper: {
+  block: {
     width: '100%',
     display: 'flex',
   },
   item: {
-    margin: 10,
+    margin: '5px 10px',
     width: '50%',
   },
   divider: {

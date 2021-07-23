@@ -533,6 +533,8 @@
     },
     "exchange": {
       "viewMarket": {
+        "oneTimePurchase": "One time purchase",
+        "repeatedPurchase": "Repeated purchase",
         "generationFrom": "Generation Start Date",
         "generationTo": "Generation End Date",
         "energy": "Energy",

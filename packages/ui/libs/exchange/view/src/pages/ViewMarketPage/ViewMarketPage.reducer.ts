@@ -4,6 +4,7 @@ export type MarketFiltersState = {
   fuelType: FormSelectOption[];
   deviceType: FormSelectOption[];
   region: FormSelectOption[];
+  subregion: FormSelectOption[];
   gridOperator: FormSelectOption[];
 };
 
@@ -11,6 +12,7 @@ export enum MarketFilterActionEnum {
   SET_FUEL_TYPE = 'SET_FUEL_TYPE',
   SET_DEVICE_TYPE = 'SET_DEVICE_TYPE',
   SET_REGION = 'SET_REGION',
+  SET_SUBREGION = 'SET_SUBREGION',
   SET_GRID_OPERATOR = 'SET_GRID_OPERATOR',
 }
 
@@ -28,6 +30,10 @@ export type MarketFiltersActions =
       payload: MarketFiltersState['region'];
     }
   | {
+      type: MarketFilterActionEnum.SET_SUBREGION;
+      payload: MarketFiltersState['subregion'];
+    }
+  | {
       type: MarketFilterActionEnum.SET_GRID_OPERATOR;
       payload: MarketFiltersState['gridOperator'];
     };
@@ -36,6 +42,7 @@ export const initialState: MarketFiltersState = {
   fuelType: [],
   deviceType: [],
   region: [],
+  subregion: [],
   gridOperator: [],
 };
 
@@ -50,6 +57,8 @@ export const reducer = (
       return { ...state, deviceType: action.payload };
     case MarketFilterActionEnum.SET_REGION:
       return { ...state, region: action.payload };
+    case MarketFilterActionEnum.SET_SUBREGION:
+      return { ...state, subregion: action.payload };
     case MarketFilterActionEnum.SET_GRID_OPERATOR:
       return { ...state, gridOperator: action.payload };
   }

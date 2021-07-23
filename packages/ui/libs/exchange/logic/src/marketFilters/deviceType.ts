@@ -26,8 +26,6 @@ export const useDeviceTypeFilterLogic: TUseDeviceTypeFilterLogic = (
     field: {
       name: 'deviceType',
       label: 'Device type',
-      select: true,
-      autocomplete: true,
       multiple: true,
       dependentOn: 'fuelType',
       dependentOptionsCallback: prepareDeviceTypesOptions(
