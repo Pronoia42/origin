@@ -2,7 +2,7 @@ import { ListAction, ListActionsBlockProps } from '@energyweb/origin-ui-core';
 import React from 'react';
 import { useReducer } from 'react';
 import { useTranslation } from 'react-i18next';
-import { OneTimePurchase } from '../../containers';
+import { OneTimePurchase, RepeatedPurchase } from '../../containers';
 import { initialState, reducer } from './ViewMarketPage.reducer';
 
 export const useViewMarketPageEffects = () => {
@@ -16,7 +16,7 @@ export const useViewMarketPageEffects = () => {
 
   const repeatedPurchase: ListAction = {
     name: t('exchange.viewMarket.repeatedPurchase'),
-    content: <div>Repeated Purchase</div>,
+    content: <RepeatedPurchase filters={state} />,
   };
 
   const listActionsProps: ListActionsBlockProps = {

@@ -48,12 +48,8 @@ export const useOneTimePurchaseFormLogic = () => {
     buttons: [
       {
         label: t('exchange.viewMarket.placeBidButton'),
-        onClick: () => {
-          console.log('place bid clicked');
-        },
         buttonProps: {
           variant: 'contained' as any,
-          disabled: true,
         },
       },
     ],

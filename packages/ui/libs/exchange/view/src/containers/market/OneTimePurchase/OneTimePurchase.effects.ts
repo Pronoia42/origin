@@ -16,9 +16,9 @@ export const useOneTimePurchaseEffects = (filters: MarketFiltersState) => {
   const { initialValues, validationSchema, fields, buttons } =
     useOneTimePurchaseFormLogic();
 
-  const { register, control, formState, handleSubmit, reset } =
+  const { register, control, formState, handleSubmit, reset, watch } =
     useForm<BidFormValues>({
-      mode: 'onBlur',
+      mode: 'onChange',
       resolver: yupResolver(validationSchema),
       defaultValues: initialValues,
     });
@@ -27,6 +27,9 @@ export const useOneTimePurchaseEffects = (filters: MarketFiltersState) => {
   const onSubmit = handleSubmit(async (values) => {
     await createBidHandler(values);
   });
+
+  const { price, energy } = watch();
+  const totalPrice = (price * energy).toFixed(2).toString();
 
   const { isValid, errors, isDirty, dirtyFields } = formState;
 
@@ -47,5 +50,6 @@ export const useOneTimePurchaseEffects = (filters: MarketFiltersState) => {
     buttons: buttonWithState,
     errors,
     dirtyFields,
+    totalPrice,
   };
 };

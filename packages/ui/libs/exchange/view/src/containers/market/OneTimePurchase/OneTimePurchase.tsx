@@ -1,11 +1,10 @@
 import { Divider } from '@material-ui/core';
 import React, { FC } from 'react';
+import { FormDatePicker, FormInput } from '@energyweb/origin-ui-core';
+import { isEmpty } from 'lodash';
 import { TotalAndButtons } from '../TotalAndButtons';
 import { useStyles } from './OneTimePurchase.styles';
 import { useOneTimePurchaseEffects } from './OneTimePurchase.effects';
-import { FormDatePicker } from 'libs/ui/core/src/components/form/FormDatePicker';
-import { FormInput } from '@energyweb/origin-ui-core';
-import { isEmpty } from 'lodash';
 import { MarketFiltersState } from '../../../pages';
 
 interface OneTimePurchaseProps {
@@ -14,8 +13,15 @@ interface OneTimePurchaseProps {
 
 export const OneTimePurchase: FC<OneTimePurchaseProps> = ({ filters }) => {
   const classes = useStyles();
-  const { register, control, fields, buttons, errors, dirtyFields } =
-    useOneTimePurchaseEffects(filters);
+  const {
+    register,
+    control,
+    fields,
+    buttons,
+    errors,
+    dirtyFields,
+    totalPrice,
+  } = useOneTimePurchaseEffects(filters);
   const { generationFrom, generationTo, energy, price } = fields;
   return (
     <div>
@@ -62,7 +68,7 @@ export const OneTimePurchase: FC<OneTimePurchaseProps> = ({ filters }) => {
           />
         </div>
       </div>
-      <TotalAndButtons totalPrice="$0.00" buttons={buttons} />
+      <TotalAndButtons totalPrice={totalPrice} buttons={buttons} />
     </div>
   );
 };
